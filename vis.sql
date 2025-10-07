@@ -1,0 +1,10 @@
+SELECT k, COUNT(*) AS count
+FROM (
+	SELECT a.id, COUNT(*) AS k
+	FROM Author a
+	JOIN Authored au ON a.id = au.id
+	GROUP BY a.id
+) AS author_publications
+WHERE k <= 100
+GROUP BY k
+ORDER BY k;
